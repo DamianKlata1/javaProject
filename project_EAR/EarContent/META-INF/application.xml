@@ -4,7 +4,7 @@
   <module>
     <web>
       <web-uri>project_web.war</web-uri>
-      <context-root>project_web</context-root>
+      <context-root>primefaces_02</context-root>
     </web>
   </module>
   <module>
