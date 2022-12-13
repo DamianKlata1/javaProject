@@ -8,7 +8,7 @@
 	</h1>
 
 	<h:outputText
-		value="Zalogowany: #{remoteClient.details.name} #{remoteClient.details.surname}" />
+		value="Zalogowany: #{remoteClient.details.name} #{remoteClient.details.surname} rola: #{remoteClient.roles}" />
 	<h:form style="display:inline;">
 		<h:commandButton value="Wyloguj" action="#{loginBB.doLogout()}" />
 	</h:form>

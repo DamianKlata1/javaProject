@@ -122,8 +122,6 @@ public class UserDAO {
 			list.add(role.getNameOfRole());
 		}
 		
-		
-		
 		return list;
 	}
 
