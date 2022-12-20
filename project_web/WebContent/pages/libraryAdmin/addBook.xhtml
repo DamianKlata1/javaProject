@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/templates/main-template.xhtml">
+
+	<ui:define name="title">
+		Dodaj książke
+	</ui:define>
+
+	<ui:define name="content">
+
+		<!-- Wrapper -->
+		<section id="wrapper"> <header>
+		<div class="inner">
+			<h2>Dodaj książke</h2>
+			<h:form>
+				<div class="row gtr-uniform">
+					<div class="col-6 col-12-xsmall">
+						<label for="title">Tytuł</label>
+						<h:inputText name="title" id="title" value="" />
+						<label for="author">Autor</label>
+						<h:inputText name="author" id="author" value="" />
+						<label for="releaseDate">Data opublikowania</label>
+						<h:inputText name="releaseDate" id="releaseDate" value="" />
+						<label for="page">Liczba stron</label>
+						<h:inputText name="page" id="page" value="" />
+						<label for="publisher">Wydawnictwo</label>
+						<h:inputText name="publisher" id="publisher" value="" />
+
+						<div class="col-6 col-12-xsmall">
+							<h:commandButton class="button primary" value="Dodaj"
+								update="msg" />
+							<h:messages />
+						</div>
+					</div>
+
+				</div>
+			</h:form>
+		</div>
+
+		</header> <!-- Content --> </section>
+	</ui:define>
+
+</ui:composition>
+</html>

@@ -8,27 +8,33 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title><ui:insert name="title">...</ui:insert></title>
-	<h:outputStylesheet name="css/style.css" library="template" />
+	<h:outputStylesheet name="css/main.css" library="template" />
 	<link type="image/x-icon" rel="shortcut icon"
 		href="#{resource['template:img/java.ico']}" />
+
 </h:head>
 
-<h:body>
-	<div id="page_wrapper">
+<h:body class="is-preload">
+	<div id="page-wrapper">
 		<ui:insert name="header">
 			<div id="header" class="box bottom-space">
 				<ui:include src="/templates/header-snippet.xhtml" />
 			</div>
 		</ui:insert>
-		<div id="content" class="box bottom-space">
-			<ui:insert name="content"></ui:insert>
-		</div>
+		<ui:insert name="content"></ui:insert>
+
 		<ui:insert name="footer">
-			<div id="footer" class="box bottom-space">
-				<ui:include src="/templates/footer-snippet.xhtml" />
-			</div>
+			<ui:include src="/templates/footer-snippet.xhtml" />
+
 		</ui:insert>
 	</div>
+<h:outputScript library="template" name="js/jquery.min.js" />
+<h:outputScript library="template" name="js/jquery.scrollex.min.js" />
+<h:outputScript library="template" name="js/browser.min.js" />
+<h:outputScript library="template" name="js/breakpoints.min.js" />
+<h:outputScript library="template" name="js/util.js" />
+<h:outputScript library="template" name="js/main.js" />
+
 </h:body>
 
 </html>

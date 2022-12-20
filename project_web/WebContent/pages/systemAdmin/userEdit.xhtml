@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/templates/main-template.xhtml">
+
+	<ui:define name="title">
+		Transakcje
+	</ui:define>
+
+	<ui:define name="content">
+
+		<!-- Wrapper -->
+		<section id="wrapper"> <header>
+		<div class="inner">
+
+			<h2>Edycja użytkownika</h2>
+
+			<h2>Dodanie użytkownika</h2>
+
+			<h:form>
+				<div class="row gtr-uniform">
+					<div class="col-6 col-12-xsmall">
+						<label for="demo-name">Login</label>
+						<h:inputText name="login" id="login" value="" />
+
+						<label for="demo-name">Hasło</label>
+						<h:inputSecret name="password" id="password" value="" />
+
+						<label for="demo-name">E-mail</label>
+						<h:inputText name="email" id="email" value="" />
+
+						<label for="demo-name">Imię</label>
+						<h:inputText name="name" id="name" value="" />
+
+						<label for="demo-name">Nazwisko</label>
+						<h:inputText name="surname" id="surname" value="" />
+
+						<label for="demo-name">Konto aktywne</label>
+						<h:selectOneRadio>
+							<div class="col-4 col-12-small">
+								<f:selectItem itemValue="yes" itemLabel="Tak" />
+							</div>
+
+							<div class="col-4 col-12-small">
+								<f:selectItem itemValue="no" itemLabel="Nie" />
+							</div>
+						</h:selectOneRadio>
+						<label for="role">Rola</label>
+						<h:selectManyCheckbox value="">
+							<f:selectItem itemValue="sAdmin" itemLabel="systemAdmin" />
+							<f:selectItem itemValue="lAdmin" itemLabel="libraryAdmin" />
+							<f:selectItem itemValue="user" itemLabel="user" />
+						</h:selectManyCheckbox>
+						<div class="col-6 col-12-xsmall">
+							<h:commandButton value="EdytujDodaj" class="button primary" />
+
+						</div>
+					</div>
+					<h:messages />
+				</div>
+
+			</h:form>
+		</div>
+
+		</header> <!-- Content --> </section>
+	</ui:define>
+</ui:composition>
+</html>

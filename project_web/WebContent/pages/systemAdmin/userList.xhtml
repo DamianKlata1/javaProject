@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/templates/main-template.xhtml">
+
+	<ui:define name="title">
+		Lista użytkowników
+	</ui:define>
+
+	<ui:define name="content">
+		<section id="banner">
+		<div class="inner">
+			<h2>Zarządzenie systemem</h2>
+			<p>Wyszukaj użytkownika po loginie:</p>
+			<h:form>
+				<div class="row gtr-uniform">
+					<div class="col-6 col-12-xsmall">
+						<h:inputText name="login" id="login" value="" />
+						<br />
+						<h:commandButton type="submit" value="Szukaj"
+							class="button primary" />
+						<a class="button primary" href="">Dodaj użytkownika</a>
+					</div>
+				</div>
+			</h:form>
+		</div>
+		</section>
+
+		<!-- Wrapper -->
+		<section id="wrapper"> <!-- One --> <section id="one"
+			class="wrapper spotlight style1">
+		<div class="inner"></div>
+
+		</section> <!-- Two --> <!-- Three --> </section>
+
+	</ui:define>
+</ui:composition>
+</html>

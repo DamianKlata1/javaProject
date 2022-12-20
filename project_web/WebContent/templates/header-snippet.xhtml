@@ -3,15 +3,43 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 
-	<h1>
-		<ui:insert name="title">...</ui:insert>
-	</h1>
+	<header id="header" class="alt">
+	
+        <h2><a href="#">Biblioteka Online</a></h2>
+        <nav>
+            <a href="#menu">Menu</a>
+        </nav>
+    </header>
 
-	<h:outputText
-		value="Zalogowany: #{remoteClient.details.name} #{remoteClient.details.surname} rola: #{remoteClient.roles}" />
-	<h:form style="display:inline;">
-		<h:commandButton value="Wyloguj" action="#{loginBB.doLogout()}" />
-	</h:form>
+    <!-- Menu -->
+    <nav id="menu">
+        <div class="inner">
+            <h2>Menu</h2>
+            <ul class="links">
+                
+                    <li>użytkownik:, rola:</li>
+                    <li>Wyloguj się</li>
+                   
+                        <li>Zarządzaj systemem</li>
+                    
+                    
+                        <li>Moje transakcje</li>
+                    
+                   
+                        <li>Transakcje w systemie</li>
+                        <li>Dodaj książke</li>
+                    
+
+               
+                    <li>rola : gość</li>
+                    <li>Zaloguj się</li>
+                    <li>Zarejestruj się</li>
+              
+                <li>Strona główna</li>
+            </ul>
+            <a href="#" class="close">Close</a>
+        </div>
+    </nav>
 
 
 </ui:composition>

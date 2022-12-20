@@ -20,9 +20,9 @@
 /javax.faces.resource : PUBLIC;
 /public : PUBLIC;
 /pages : systemAdmin;
-/pages/mainPage : user, libraryAdmin, systemAdmin;
-/pages/admin : systemAdmin;
+/pages/systemAdmin : systemAdmin;
 /pages/libraryAdmin : libraryAdmin;
+
 			</param-value>
 		</init-param>
 		<init-param>

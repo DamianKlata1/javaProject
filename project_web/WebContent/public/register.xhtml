@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/templates/main-template.xhtml">
+
+	<ui:define name="title">
+		Rejestracja
+	</ui:define>
+
+	<ui:define name="content">
+		<!-- Wrapper -->
+		<section id="wrapper"> <header>
+		<div class="inner">
+			<h2>Zarejestruj się</h2>
+			<h:form>
+				<div class="row gtr-uniform">
+					<div class="col-6 col-12-xsmall">
+						<label for="demo-name">Login</label>
+						<h:inputText name="login" id="login" value="" />
+						<label for="demo-name">Hasło</label>
+						<h:inputSecret name="pass1" id="pass1" value="" />
+						<label for="demo-name">Potwierdź hasło</label>
+						<h:inputSecret name="pass2" id="pass2" value="" />
+						<label for="demo-name">E-mail</label>
+						<h:inputText name="email" id="email" value="" />
+						<label for="demo-name">Imię</label>
+						<h:inputText name="name" id="name" value="" />
+						<label for="demo-name">Nazwisko</label>
+						<h:inputText name="surname" id="surname" value="" />
+
+						<div class="col-6 col-12-xsmall">
+							<h:commandButton class="button primary" value="Zarejestruj"
+								update="msg" />
+							<p>
+								Masz już konto?<a href="">zaloguj się</a>
+							</p>
+
+						</div>
+					</div>
+					<h:messages />
+				</div>
+			</h:form>
+		</div>
+
+		</header> <!-- Content --> </section>
+	</ui:define>
+
+</ui:composition>
+</html>
