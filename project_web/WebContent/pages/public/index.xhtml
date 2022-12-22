@@ -7,18 +7,33 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <ui:composition template="/templates/main-template.xhtml">
-
 	<ui:define name="title">
-		Biblioteka online
+		Strona główna
 	</ui:define>
 
 	<ui:define name="content">
 
-		<p:panel header="jakaś zawartość" styleClass="bottom-space">... przykładowa stała zawartość ...</p:panel>
+		<section id="banner">
+		<div class="inner">
+			<!--	<div class="logo"><span class="icon fa-gem"></span></div> -->
 
-		<ui:insert name="pageContent"></ui:insert>
+			<h2>Biblioteka Online</h2>
+			<p>Wyszukaj książke po tytule lub autorze:</p>
+			<h:form>
+				<div class="row gtr-uniform">
+					<div class="col-6 col-12-xsmall">
+						<h:inputText id="searchBar" value="" />
+						<br />
+						<h:commandButton class="button primary" value="Szukaj"
+							update="msg" />
+						<h:messages />
+					</div>
+				</div>
+			</h:form>
+		</div>
+		</section>
 
 	</ui:define>
-	
+
 </ui:composition>
 </html>

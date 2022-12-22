@@ -17,8 +17,8 @@ import com.jsf.entities.User;
 @Named
 @RequestScoped
 public class LoginBB {
-	private static final String PAGE_MAIN = "/pages/index?faces-redirect=true";
-	private static final String PAGE_LOGIN = "/pages/login";
+	private static final String PAGE_MAIN = "/pages/public/index?faces-redirect=true";
+	private static final String PAGE_LOGIN = "/pages/public/login";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private String login;
@@ -78,12 +78,17 @@ public class LoginBB {
 	}
 	
 	public String doLogout(){
+		FacesContext ctx = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
 				.getExternalContext().getSession(true);
 		//Invalidate session
 		// - all objects within session will be destroyed
 		// - new session will be created (with new ID)
 		session.invalidate();
+		
+		ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+				"Poprawnie wylogowano z systemu", null));
+		
 		return PAGE_LOGIN;
 	}
 	

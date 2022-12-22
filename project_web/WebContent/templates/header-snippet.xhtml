@@ -4,42 +4,50 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 	<header id="header" class="alt">
-	
-        <h2><a href="#">Biblioteka Online</a></h2>
-        <nav>
-            <a href="#menu">Menu</a>
-        </nav>
-    </header>
 
-    <!-- Menu -->
-    <nav id="menu">
-        <div class="inner">
-            <h2>Menu</h2>
-            <ul class="links">
-                
-                    <li>użytkownik:, rola:</li>
-                    <li>Wyloguj się</li>
-                   
-                        <li>Zarządzaj systemem</li>
-                    
-                    
-                        <li>Moje transakcje</li>
-                    
-                   
-                        <li>Transakcje w systemie</li>
-                        <li>Dodaj książke</li>
-                    
+		<h2>
+			<a href="#">Biblioteka Online</a>
+		</h2>
+		<nav>
+			<a href="#menu">Menu</a>
 
-               
-                    <li>rola : gość</li>
-                    <li>Zaloguj się</li>
-                    <li>Zarejestruj się</li>
-              
-                <li>Strona główna</li>
-            </ul>
-            <a href="#" class="close">Close</a>
-        </div>
-    </nav>
+		</nav>
+	</header>
+
+	<!-- Menu -->
+	<nav id="menu">
+		<div class="inner">
+			<h:form>
+				<ul class="links">
+					<li><h:outputText
+							value="użytkownik: #{remoteClient.details.login} role:#{remoteClient.roles}" /></li>
+					<li><h:commandButton class="button primary" value="Wyloguj"
+							action="#{loginBB.doLogout()}" update="msg"
+							rendered="#{remoteClient.isInOneRole(utils.getRoleListAsHashSet())}" /></li>
+					<li><h:link value="Zarządzaj systemem"
+							outcome="/pages/systemAdmin/userList"
+							rendered="#{remoteClient.isInRole('systemAdmin')}" /></li>
+					<li><h:link value="Moje transakcje"
+							outcome="/pages/user/transaction"
+							rendered="#{remoteClient.isInRole('user')}" /></li>
+					<li><h:link value="Transakcje w systemie"
+							outcome="/pages/libraryAdmin/transactionAdmin"
+							rendered="#{remoteClient.isInRole('libraryAdmin')}" /></li>
+					<li><h:link value="Dodaj książke"
+							outcome="/pages/libraryAdmin/addBook"
+							rendered="#{remoteClient.isInRole('libraryAdmin')}" /></li>
+					<li><h:link value="Zaloguj" outcome="/pages/public/login"
+							rendered="#{not remoteClient.isInOneRole(utils.getRoleListAsHashSet())}" /></li>
+					<li><h:link value="Zarejestruj"
+							outcome="/pages/public/register"
+							rendered="#{not remoteClient.isInOneRole(utils.getRoleListAsHashSet())}" /></li>
+					<li><h:link value="Strona główna"
+							outcome="/pages/public/index" /></li>
+				</ul>
+				<a href="#" class="close">Close</a>
+			</h:form>
+		</div>
+	</nav>
 
 
 </ui:composition>
