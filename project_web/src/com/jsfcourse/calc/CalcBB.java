@@ -46,7 +46,7 @@ public class CalcBB {
 			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Operacja wykonana poprawnie", null));
 			return "showresult"; 
 		} catch (Exception e) {
-			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "B³¹d podczas przetwarzania parametrów", null));
+			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "BÅ‚Ä…d podczas przetwarzania parametrÃ³w", null));
 			return null; 
 		}
 				

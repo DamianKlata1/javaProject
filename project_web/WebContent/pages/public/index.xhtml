@@ -22,7 +22,7 @@
 			<h:form>
 				<div class="row gtr-uniform">
 					<div class="col-6 col-12-xsmall">
-						<h:inputText id="searchBar" value="" />
+						<h:inputText id="searchBar" value="#{mainPageBB.searchBar}" />
 						<br />
 						<h:commandButton class="button primary" value="Szukaj"
 							update="msg" />
@@ -32,7 +32,33 @@
 			</h:form>
 		</div>
 		</section>
-
+		<section id="one" class="wrapper spotlight style1">
+		<div class="inner">
+			<h:dataTable value="#{mainPageBB.bookList}" var="b"
+				rendered="#{mainPageBB.searchBar != null}" style="text-align:center">
+				<h:column>
+					<f:facet name="header">Tytuł</f:facet>
+					<h:outputText value="#{b.title}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Autor</f:facet>
+					<h:outputText value="#{b.author}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Wydawnictwo</f:facet>
+					<h:outputText value="#{b.publisher}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Data opublikowania</f:facet>
+					<h:outputText value="#{b.releaseDate}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Liczba Stron</f:facet>
+					<h:outputText value="#{b.page}" />
+				</h:column>
+			</h:dataTable>
+		</div>
+		</section>
 	</ui:define>
 
 </ui:composition>

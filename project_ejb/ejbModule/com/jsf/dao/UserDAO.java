@@ -73,7 +73,7 @@ public class UserDAO {
 			} else {
 				where += "and ";
 			}
-			where += "p.surname like :surname ";
+			where += "u.surname like :surname ";
 		}
 		
 		// ... other parameters ... 
