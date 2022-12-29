@@ -20,7 +20,10 @@
 			<h:form>
 				<ul class="links">
 					<li><h:outputText
-							value="użytkownik: #{remoteClient.details.login} role:#{remoteClient.roles}" /></li>
+							value="użytkownik: #{remoteClient.details.login} role:#{remoteClient.roles}"
+							rendered="#{remoteClient.isInOneRole(utils.getRoleListAsHashSet())}" />
+							<h:outputText
+							value="role: gość" rendered="#{not remoteClient.isInOneRole(utils.getRoleListAsHashSet())}" /></li>
 					<li><h:commandButton class="button primary" value="Wyloguj"
 							action="#{loginBB.doLogout()}" update="msg"
 							rendered="#{remoteClient.isInOneRole(utils.getRoleListAsHashSet())}" /></li>

@@ -20,24 +20,52 @@
 			<h:form>
 				<div class="row gtr-uniform">
 					<div class="col-6 col-12-xsmall">
-						<h:inputText name="login" id="login" value="" />
+						<h:inputText id="searchBar" value="#{userListBB.searchBar}" />
 						<br />
-						<h:commandButton type="submit" value="Szukaj"
-							class="button primary" />
-						<a class="button primary" href="">Dodaj użytkownika</a>
+						<h:commandButton class="button primary" value="Szukaj"
+							update="msg" />
+						<a class="button primary" >Dodaj użytkownika</a>
 					</div>
 				</div>
 			</h:form>
 		</div>
 		</section>
 
-		<!-- Wrapper -->
-		<section id="wrapper"> <!-- One --> <section id="one"
-			class="wrapper spotlight style1">
-		<div class="inner"></div>
-
-		</section> <!-- Two --> <!-- Three --> </section>
-
+		<section id="one" class="wrapper spotlight style1">
+		<div class="inner">
+			<h:dataTable value="#{userListBB.userList}" var="u"
+				style="text-align:center"
+				rendered="#{userListBB.searchBar != null}">
+				<h:column>
+					<f:facet name="header">Login</f:facet>
+				<h:outputText value="#{u.login}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Imię</f:facet>
+					<h:outputText value="#{u.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nazwisko</f:facet>
+					<h:outputText value="#{u.surname}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Rola</f:facet>
+					<ui:repeat var="r" value="#{userListBB.getRoleListOfUser(u)}" >
+					<h:outputText value="#{r.nameOfRole}" />
+					</ui:repeat>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Konto aktywne</f:facet>
+					<h:outputText value="#{u.active}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Opcje</f:facet>
+					<h:commandButton class="button primary" value="Opcje" />
+				</h:column>
+			</h:dataTable>
+		</div>
+		</section>
 	</ui:define>
+
 </ui:composition>
 </html>

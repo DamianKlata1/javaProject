@@ -1,4 +1,4 @@
-package com.jsfcourse.calc;
+package com.project.calc;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.annotation.FacesConfig;

@@ -22,6 +22,7 @@
 /pages : systemAdmin;
 /pages/systemAdmin : systemAdmin;
 /pages/libraryAdmin : libraryAdmin;
+/pages/user : user;
 
 			</param-value>
 		</init-param>

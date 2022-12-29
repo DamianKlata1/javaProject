@@ -1,4 +1,4 @@
-package com.jsfcourse.calc;
+package com.project.calc;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;

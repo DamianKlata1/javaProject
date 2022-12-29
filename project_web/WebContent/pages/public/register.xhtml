@@ -19,31 +19,62 @@
 			<h2>Zarejestruj się</h2>
 			<h:form>
 				<div class="row gtr-uniform">
+				
 					<div class="col-6 col-12-xsmall">
-						<label for="demo-name">Login</label>
-						<h:inputText name="login" id="login" value="" />
-						<label for="demo-name">Hasło</label>
-						<h:inputSecret name="pass1" id="pass1" value="" />
-						<label for="demo-name">Potwierdź hasło</label>
-						<h:inputSecret name="pass2" id="pass2" value="" />
-						<label for="demo-name">E-mail</label>
-						<h:inputText name="email" id="email" value="" />
-						<label for="demo-name">Imię</label>
-						<h:inputText name="name" id="name" value="" />
-						<label for="demo-name">Nazwisko</label>
-						<h:inputText name="surname" id="surname" value="" />
 
+						<label for="demo-name">Login</label>
+						<p:inputText name="login" id="login" value="#{registerBB.login}"
+							required="true" requiredMessage="Podaj login"
+							validatorMessage="Login powienien zawierać od 4 do 10 znaków oraz nie powinien zawierać znaków 
+							specjalnych">
+							<f:validateRegex pattern="^[0-9a-zA-Z]{4,10}$" />
+						</p:inputText>
+						
+
+						<label for="demo-name">Hasło</label>
+						<p:password id="pwd1" value="#{registerBB.password}" match="pwd2"
+							validatorMessage="Hasła powinny być takie same"
+							label="Password 1" required="true" requiredMessage="Podaj hasło"/>
+						
+
+						<label for="demo-name">Potwierdź hasło</label>
+						<p:password id="pwd2" value="#{registerBB.password}"
+							label="Password 2" required="true" requiredMessage="Potwierdz hasło"/>
+						
+
+						<label for="demo-name">E-mail</label>
+						<p:inputText name="email" id="email" value="#{registerBB.email}"
+							required="true" requiredMessage="Podaj e-mail"
+							validatorMessage="Podaj prawidłowy e-mail">
+							<f:validateRegex pattern="^\S+@\S+\.\S+$" />
+						</p:inputText>
+						
+
+						<label for="demo-name">Imię</label>
+						<p:inputText name="name" id="name" value="#{registerBB.name}"
+							required="true" requiredMessage="Podaj imię" />
+						
+
+						<label for="demo-name">Nazwisko</label>
+						<p:inputText name="surname" id="surname"
+							value="#{registerBB.surname}" required="true"
+							requiredMessage="Podaj nazwisko" />
+						
+						<br/>
 						<div class="col-6 col-12-xsmall">
-							<h:commandButton class="button primary" value="Zarejestruj"
-								update="msg" />
+							<h:commandButton class="button primary" id="button" value="Zarejestruj"
+								action="#{registerBB.doRegister}" />
 							<p>
-								Masz już konto?<a href="">zaloguj się</a>
+								Masz już konto?
+								<h:link value="Zaloguj się" outcome="/pages/public/login"></h:link>
 							</p>
 
 						</div>
+						
 					</div>
-					<h:messages />
+					<p:messages />
 				</div>
+
 			</h:form>
 		</div>
 

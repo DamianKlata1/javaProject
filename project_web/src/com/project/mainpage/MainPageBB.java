@@ -1,4 +1,4 @@
-package src.com.jsfcourse.mainpage;
+package com.project.mainpage;
 
 import java.util.List;
 

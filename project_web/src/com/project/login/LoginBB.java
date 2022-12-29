@@ -1,4 +1,4 @@
-package com.jsfcourse.login;
+package com.project.login;
 
 import java.util.List;
 
@@ -61,7 +61,7 @@ public class LoginBB {
 		RemoteClient<User> client = new RemoteClient<User>(); //create new RemoteClient
 		client.setDetails(user);
 		
-		List<String> roles = userDAO.getUserRolesFromDatabase(user); //get User roles 
+		List<String> roles = userDAO.getUserRolesFromDatabaseAsStrings(user); //get User roles 
 		
 		if (roles != null) { //save roles in RemoteClient
 			for (String role: roles) {

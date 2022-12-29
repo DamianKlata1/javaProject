@@ -1,4 +1,4 @@
-package src.com.jsf.course.utils;
+package com.project.utils;
 
 import java.util.HashSet;
 import java.util.List;

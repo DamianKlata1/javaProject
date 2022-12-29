@@ -12,6 +12,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import com.jsf.entities.User;
+import com.jsf.entities.Book;
 import com.jsf.entities.Role;
 
 //DAO - Data Access Object for Person entity
@@ -75,18 +76,18 @@ public class UserDAO {
 			}
 			where += "u.surname like :surname ";
 		}
-		
-		// ... other parameters ... 
+
+		// ... other parameters ...
 
 		// 2. Create query object
 		Query query = em.createQuery(select + from + where + orderby);
 
 		// 3. Set configured parameters
 		if (surname != null) {
-			query.setParameter("surname", surname+"%");
+			query.setParameter("surname", surname + "%");
 		}
 
-		// ... other parameters ... 
+		// ... other parameters ...
 
 		// 4. Execute query and retrieve list of Person objects
 		try {
@@ -100,29 +101,69 @@ public class UserDAO {
 
 	public User getUserFromDatabase(String login, String pass) {
 		// TODO Auto-generated method stub
-		
-		try{
-	        return (User)em.createQuery("SELECT u FROM User u  where u.login = :value1 AND u.password = :value2")
-	                .setParameter("value1", login).setParameter("value2", pass).getSingleResult();
-	    } catch(NoResultException e) {
-	        return null;
-	    }
-	
+
+		try {
+			return (User) em.createQuery("SELECT u FROM User u  where u.login = :value1 AND u.password = :value2")
+					.setParameter("value1", login).setParameter("value2", pass).getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+
 	}
 
-	public List<String> getUserRolesFromDatabase(User user) {
+	public List<Role> getUserRolesFromDatabase(User user) {
 		// TODO Auto-generated method stub
-		ArrayList<String> list = new ArrayList<String>();
-		
 		Query q = em.createQuery("SELECT r FROM Role r INNER JOIN FETCH r.users u WHERE u.login = :login");
 		q.setParameter("login", user.getLogin());
 		List<Role> roles = q.getResultList();
-		
-		for(Role role: roles) {
+
+		return roles;
+	}
+	public List<String> getUserRolesFromDatabaseAsStrings(User user) {
+		// TODO Auto-generated method stub
+		List<Role> roles = getUserRolesFromDatabase(user);
+		ArrayList<String> list= new ArrayList<String>();
+		for (Role role : roles) {
 			list.add(role.getNameOfRole());
 		}
-		
+
 		return list;
 	}
+
+	public List<Role> getDefaultRoleList() {
+		List<Role> list = null;
+		Query q = em.createQuery("select r FROM Role r where r.nameOfRole like :user");
+		q.setParameter("user", "user");
+		list = q.getResultList();
+		return list;
+	}
+
+	public boolean checkIfLoginOrEmailExists(String login,String email) {
+		Query q=em.createQuery("select u FROM User u where u.login like :login OR u.e_mail like :email");
+		q.setParameter("login", login);
+		q.setParameter("email", email);
+		if(q.getResultList().size()>0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	public List<User> getListByLoginOrEmail(String searchParameter) {
+		List<User> list = null;
+
+		Query query = em.createQuery("select u from User u where u.login like :searchParameter "
+				+ "or u.e_mail like :searchParameter");
+		query.setParameter("searchParameter", searchParameter+"%");
+
+		try {
+			list = query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	
 
 }

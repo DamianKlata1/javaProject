@@ -20,18 +20,22 @@
 				<div class="row gtr-uniform">
 					<div class="col-6 col-12-xsmall">
 						<h:outputLabel for="login" value="login:" />
-						<h:inputText id="login" value="#{loginBB.login}" required="true"
+						<p:inputText id="login" value="#{loginBB.login}" required="true"
 							requiredMessage="podaj login" />
 						<h:outputLabel for="pass" value="hasło:" />
-						<h:inputSecret id="pass" value="#{loginBB.pass}" required="true"
+						<p:password id="pass" value="#{loginBB.pass}" required="true"
 							requiredMessage="podaj hasło" />
 						<div class="col-6 col-12-xsmall">
 
-							<h:messages />
+							<p:messages />
 
 							<h:commandButton class="button primary" value="Zaloguj"
-								action="#{loginBB.doLogin()}" update="msg" />
-							<p>Nie masz konta?zarejestruj się</p>
+								action="#{loginBB.doLogin()}"  />
+							<p>
+								Nie masz konta?
+								<h:link value="zarejestruj się" outcome="/pages/public/register">
+								</h:link>
+							</p>
 						</div>
 					</div>
 				</div>
