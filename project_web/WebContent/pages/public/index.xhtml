@@ -24,41 +24,47 @@
 					<div class="col-6 col-12-xsmall">
 						<h:inputText id="searchBar" value="#{mainPageBB.searchBar}" />
 						<br />
-						<h:commandButton class="button primary" value="Szukaj"
-							update="msg" />
+						<p:commandButton class="button primary" value="Szukaj"
+							update="form-table" />
 						<h:messages />
 					</div>
 				</div>
 			</h:form>
 		</div>
 		</section>
-		<section id="one" class="wrapper spotlight style1">
-		<div class="inner">
-			<h:dataTable value="#{mainPageBB.bookList}" var="b"
-				rendered="#{mainPageBB.searchBar != null}" style="text-align:center">
-				<h:column>
-					<f:facet name="header">Tytuł</f:facet>
-					<h:outputText value="#{b.title}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">Autor</f:facet>
-					<h:outputText value="#{b.author}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">Wydawnictwo</f:facet>
-					<h:outputText value="#{b.publisher}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">Data opublikowania</f:facet>
-					<h:outputText value="#{b.releaseDate}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">Liczba Stron</f:facet>
-					<h:outputText value="#{b.page}" />
-				</h:column>
-			</h:dataTable>
-		</div>
-		</section>
+		<h:form id="form-table">
+			<section id="one" class="wrapper spotlight style1">
+			<div class="inner">
+				<h:dataTable value="#{mainPageBB.bookList}" var="b"
+					style="text-align:center">
+					<h:column>
+						<f:facet name="header">Tytuł</f:facet>
+						<h:outputText value="#{b.title}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Autor</f:facet>
+						<h:outputText value="#{b.author}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Wydawnictwo</f:facet>
+						<h:outputText value="#{b.publisher}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Data opublikowania</f:facet>
+						<h:outputText value="#{b.releaseDate}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Liczba Stron</f:facet>
+						<h:outputText value="#{b.page}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Opcje</f:facet>
+						<h:commandButton value="Zarezerwuj" action="#{mainPageBB.reserveBook(b,remoteClient.details.idUser)}" />
+					</h:column>
+				</h:dataTable>
+			</div>
+			</section>
+		</h:form>
 	</ui:define>
 
 </ui:composition>

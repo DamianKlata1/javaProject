@@ -164,6 +164,21 @@ public class UserDAO {
 
 		return list;
 	}
+	public void setRolesToAnUser(User user,List<Role> roles) {
+		user.setRoles(roles);
+	}
+	public Integer getUserIdByLogin(String login) {
+		TypedQuery<Integer> query = em.createQuery("select u.idUser from User u where u.login like :login ",Integer.class);
+		query.setParameter("login", login);
+		return query.getSingleResult();
+		
+	}
+	public Integer getUserIdByEmail(String email) {
+		TypedQuery<Integer> query = em.createQuery("select u.idUser from User u where u.e_mail like :email ",Integer.class);
+		query.setParameter("email", email);
+		return query.getSingleResult();
+		
+	}
 	
 
 }

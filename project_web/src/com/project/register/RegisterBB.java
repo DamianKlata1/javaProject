@@ -1,4 +1,4 @@
-package src.com.project.register;
+package com.project.register;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;

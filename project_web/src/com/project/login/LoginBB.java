@@ -55,6 +55,12 @@ public class LoginBB {
 					"Niepoprawny login lub hasło", null));
 			return PAGE_STAY_AT_THE_SAME;
 		}
+		
+		if (user.getActive().equals("no")) {
+			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Konto nieaktywne", null));
+			return PAGE_STAY_AT_THE_SAME;
+		}
 
 		// 3. if logged in: get User roles, save in RemoteClient and store it in session
 		

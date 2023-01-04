@@ -3,6 +3,7 @@ package com.jsf.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 
 /**
@@ -39,6 +40,17 @@ public class Transaction implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="idUser")
 	private User user;
+
+	public Transaction(Date borrowDate, Date cancelReservationDate, Date reservationDate, Date returnDate, Book book,
+			User user) {
+		super();
+		this.borrowDate = borrowDate;
+		this.cancelReservationDate = cancelReservationDate;
+		this.reservationDate = reservationDate;
+		this.returnDate = returnDate;
+		this.book = book;
+		this.user = user;
+	}
 
 	public Transaction() {
 	}
@@ -98,5 +110,13 @@ public class Transaction implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	@Override
+	public boolean equals(Object other) {
+        if (this == other) return true;
+        if (!(other instanceof Transaction)) return false;
+        Transaction otherEntity = (Transaction) other;
+        return Objects.equals(this.getIdTransaction(), otherEntity.getIdTransaction());
+    }
 
 }

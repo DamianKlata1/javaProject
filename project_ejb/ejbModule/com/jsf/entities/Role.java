@@ -3,6 +3,7 @@ package com.jsf.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -60,5 +61,21 @@ public class Role implements Serializable {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
+
+	@Override
+	public String toString() {
+		return nameOfRole ;
+	}
+
+
+	@Override
+	public boolean equals(Object other) {
+        if (this == other) return true;
+        if (!(other instanceof Role)) return false;
+        Role otherEntity = (Role) other;
+        return Objects.equals(this.getIdRole(), otherEntity.getIdRole());
+    }
+	
+	
 
 }

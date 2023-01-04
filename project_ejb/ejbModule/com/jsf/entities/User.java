@@ -3,6 +3,7 @@ package com.jsf.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -16,7 +17,7 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idUser;
+	private Integer idUser;
 
 	private String active;
 
@@ -50,12 +51,15 @@ public class User implements Serializable {
 
 	public User() {
 	}
-
-	public int getIdUser() {
+	public void log(String text) {
+		System.out.println(text + ": [" + login + "], " + password + ", " + e_mail + ", " + name + ", " + surname);
+	}
+	
+	public Integer getIdUser() {
 		return this.idUser;
 	}
 
-	public void setIdUser(int idUser) {
+	public void setIdUser(Integer idUser) {
 		this.idUser = idUser;
 	}
 
@@ -136,5 +140,12 @@ public class User implements Serializable {
 
 		return transaction;
 	}
+	@Override
+	public boolean equals(Object other) {
+        if (this == other) return true;
+        if (!(other instanceof User)) return false;
+        User otherEntity = (User) other;
+        return Objects.equals(this.getIdUser(), otherEntity.getIdUser());
+    }
 
 }

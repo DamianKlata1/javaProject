@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -116,5 +117,13 @@ public class Book implements Serializable {
 
 		return transaction;
 	}
+	
+	@Override
+	public boolean equals(Object other) {
+        if (this == other) return true;
+        if (!(other instanceof Book)) return false;
+        Book otherEntity = (Book) other;
+        return Objects.equals(this.getIdBook(), otherEntity.getIdBook());
+    }
 
 }
