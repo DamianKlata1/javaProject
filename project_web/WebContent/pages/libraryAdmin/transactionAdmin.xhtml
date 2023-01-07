@@ -17,24 +17,65 @@
 		<section id="banner">
 		<div class="inner">
 			<!--	<div class="logo"><span class="icon fa-gem"></span></div> -->
-			<h:messages />
 			<h2>Transakcje w systemie</h2>
 			<p>Wyszukaj transakcje</p>
-			<h:form >
+			<h:form>
 				<div class="row gtr-uniform">
 					<div class="col-6 col-12-xsmall">
-						<h:inputText name="searchBar" id="searchBar" value="" />
-						<br/>
-						<h:commandButton value="Szukaj" class="button primary"/>
-							
+						<h:inputText name="searchBar" id="searchBar" value="#{transactionBB.searchBar}" />
+						<br />
+						<p:commandButton value="Szukaj" class="button primary"  update="form-table"/>
+
 					</div>
 				</div>
 			</h:form>
-			<section id="one" class="wrapper spotlight style1">
-			<div class="inner"></div>
+			<!-- </div>
+		</section>
+		<section id="one" class="wrapper spotlight style1">
+		<div class="inner">  -->
+			<h:form id="form-table">
+				<h:dataTable value="#{transactionBB.transactionList}" var="t"
+					style="text-align:center">
+					<h:column>
+						<f:facet name="header">Użytkownik</f:facet>
+						<h:outputText value="#{t.user.login}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Tytuł</f:facet>
+						<h:outputText value="#{t.book.title}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Data rezerwacji</f:facet>
+						<h:outputText value="#{t.reservationDate}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Data wypożyczenia</f:facet>
+						<h:outputText value="#{t.borrowDate}"
+							rendered="#{t.borrowDate !=null}" />
+						<h:commandButton value="Wypożycz"
+							action="#{transactionBB.borrow(t)}"
+							rendered="#{t.borrowDate == null and t.cancelReservationDate == null}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Data zwrotu</f:facet>
+						<h:outputText value="#{t.returnDate}"
+							rendered="#{t.returnDate !=null}" />
+						<h:commandButton value="Zwróć"
+							action="#{transactionBB.returnBook(t)}"
+							rendered="#{t.borrowDate != null and t.returnDate == null}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Data anulowania rezerwacji</f:facet>
+						<h:outputText value="#{t.cancelReservationDate}"
+							rendered="#{t.cancelReservationDate !=null}" />
+						<h:commandButton value="Anuluj"
+							action="#{transactionBB.cancel(t)}"
+							rendered="#{t.cancelReservationDate == null and t.borrowDate == null}" />
+					</h:column>
 
-			</section>
-
+				</h:dataTable>
+			</h:form>
+			<h:messages />
 		</div>
 		</section>
 	</ui:define>

@@ -65,6 +65,7 @@ public class MainPageBB {
 		book.setAvailable("no");
 		transactionDAO.create(transaction);
 		bookDAO.merge(book);
+		bookList=getBookList();
 		ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
 				"Książka pomyślnie zarezerwowana", null));
 		return PAGE_STAY_AT_THE_SAME;

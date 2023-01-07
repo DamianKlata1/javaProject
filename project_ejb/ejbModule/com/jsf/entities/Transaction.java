@@ -41,7 +41,7 @@ public class Transaction implements Serializable {
 	@JoinColumn(name="idUser")
 	private User user;
 
-	public Transaction(Date borrowDate, Date cancelReservationDate, Date reservationDate, Date returnDate, Book book,
+	public Transaction(Date reservationDate, Date borrowDate, Date cancelReservationDate, Date returnDate, Book book,
 			User user) {
 		super();
 		this.borrowDate = borrowDate;
@@ -71,12 +71,15 @@ public class Transaction implements Serializable {
 		this.borrowDate = borrowDate;
 	}
 
-	public Date getCancelReservationDate() {
+	public Date returnDate() {
 		return this.cancelReservationDate;
 	}
 
 	public void setCancelReservationDate(Date cancelReservationDate) {
 		this.cancelReservationDate = cancelReservationDate;
+	}
+	public Date getCancelReservationDate() {
+		return this.cancelReservationDate;
 	}
 
 	public Date getReservationDate() {

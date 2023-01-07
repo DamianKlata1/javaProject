@@ -23,8 +23,4 @@ public class Utils {
 	public HashSet<String> getRoleListAsHashSet(){
 		return roleDAO.getFullListAsHashSet();
 	}
-	
-	
-	
-
 }

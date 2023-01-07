@@ -30,13 +30,13 @@
 					</div>
 				</div>
 			</h:form>
-		</div>
-		</section>
-		<h:form id="form-table">
-			<section id="one" class="wrapper spotlight style1">
-			<div class="inner">
+
+			<h:form id="form-table" debug="true">
+
 				<h:dataTable value="#{mainPageBB.bookList}" var="b"
-					style="text-align:center">
+					style="text-align:center"  rows="10" paginator="true"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} 
+					{PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 					<h:column>
 						<f:facet name="header">Tytuł</f:facet>
 						<h:outputText value="#{b.title}" />
@@ -59,12 +59,14 @@
 					</h:column>
 					<h:column>
 						<f:facet name="header">Opcje</f:facet>
-						<h:commandButton value="Zarezerwuj" action="#{mainPageBB.reserveBook(b,remoteClient.details.idUser)}" />
+						<h:commandButton value="Zarezerwuj"
+							action="#{mainPageBB.reserveBook(b,remoteClient.details.idUser)}" />
 					</h:column>
 				</h:dataTable>
-			</div>
-			</section>
-		</h:form>
+			</h:form>
+		</div>
+		</section>
+
 	</ui:define>
 
 </ui:composition>

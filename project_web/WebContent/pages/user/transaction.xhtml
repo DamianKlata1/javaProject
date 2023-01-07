@@ -11,19 +11,53 @@
 	<ui:define name="title">
 		Transakcje
 	</ui:define>
-
 	<ui:define name="content">
-		<!-- Banner -->
 		<section id="banner">
 		<div class="inner">
-			<!--	<div class="logo"><span class="icon fa-gem"></span></div> -->
-			<h:messages />
 			<h2>Twoje transakcje</h2>
-			<section id="one" class="wrapper spotlight style1">
-			<div class="inner"></div>
+			<h:form id="form-table">
 
-			</section>
+				<section id="one" class="wrapper spotlight style1">
+				<div class="inner">
+					<h:dataTable
+						value="#{transactionBB.getUserTransactionList(remoteClient.details.idUser)}"
+						var="t" style="text-align:center">
+						<h:column>
+							<f:facet name="header">Tytuł</f:facet>
+							<h:outputText value="#{t.book.title}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Data rezerwacji</f:facet>
+							<h:outputText value="#{t.reservationDate}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Data wypożyczenia</f:facet>
+							<h:outputText value="#{t.borrowDate}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Data zwrotu</f:facet>
+							<h:outputText value="#{t.returnDate}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Data anulowania rezerwacji</f:facet>
+							<h:outputText value="#{t.cancelReservationDate}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Opcje</f:facet>
+							<h:commandButton value="anuluj"
+								action="#{transactionBB.cancel(t)}"
+								rendered="#{t.borrowDate == null and t.returnDate == null 
+								and t.cancelReservationDate == null}" />
+							<h:outputText value="Transakcja zakończona"
+								rendered="#{t.returnDate != null or t.cancelReservationDate != null}" />
+							<h:outputText value="Transakcja w toku"
+								rendered="#{t.borrowDate != null and t.returnDate == null}" />
+						</h:column>
+					</h:dataTable>
 
+				</div>
+				<h:messages /> </section>
+			</h:form>
 		</div>
 		</section>
 	</ui:define>

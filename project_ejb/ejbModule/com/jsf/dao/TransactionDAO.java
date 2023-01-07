@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.jsf.entities.Book;
 import com.jsf.entities.Transaction;
 
 
@@ -47,6 +48,35 @@ public class TransactionDAO {
 
 		return list;
 	}
+	public List<Transaction> getUserTransactionListById(Integer id){
+		List<Transaction> list =null;
+		Query query = em.createQuery("select t from Transaction t where t.user.idUser like :id");
+		query.setParameter("id", id);
+		try {
+			list = query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	
+	public List<Transaction> getTransactionListBySearchBar(String searchParameter){
+		List<Transaction> list = null;
+
+		Query query = em.createQuery("select t from Transaction t where t.user.login like :searchParameter "
+				+ "or t.book.title like :searchParameter");
+		query.setParameter("searchParameter", searchParameter+"%");
+
+		try {
+			list = query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	
 
 	
 
