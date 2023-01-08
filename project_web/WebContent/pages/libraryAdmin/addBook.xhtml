@@ -22,19 +22,22 @@
 				<div class="row gtr-uniform">
 					<div class="col-6 col-12-xsmall">
 						<label for="title">Tytuł</label>
-						<h:inputText name="title" id="title" value="" />
+						<h:inputText name="title" id="title" value="#{bookAddBB.title}" />
 						<label for="author">Autor</label>
-						<h:inputText name="author" id="author" value="" />
+						<h:inputText name="author" id="author" value="#{bookAddBB.author}" />
 						<label for="releaseDate">Data opublikowania</label>
-						<h:inputText name="releaseDate" id="releaseDate" value="" />
+						<h:inputText name="releaseDate" id="releaseDate"
+							value="#{bookAddBB.releaseDate}" >
+							<f:convertDateTime pattern="yyyy-MM-dd" />
+						</h:inputText>
 						<label for="page">Liczba stron</label>
-						<h:inputText name="page" id="page" value="" />
+						<h:inputText name="page" id="page" value="#{bookAddBB.page}" />
 						<label for="publisher">Wydawnictwo</label>
-						<h:inputText name="publisher" id="publisher" value="" />
+						<h:inputText name="publisher" id="publisher"
+							value="#{bookAddBB.publisher}" />
 
 						<div class="col-6 col-12-xsmall">
-							<h:commandButton class="button primary" value="Dodaj"
-								update="msg" />
+							<h:commandButton class="button primary" value="Dodaj książke" action="#{bookAddBB.bookAdd}" />
 							<h:messages />
 						</div>
 					</div>

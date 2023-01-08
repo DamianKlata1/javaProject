@@ -69,28 +69,32 @@ public class RegisterBB {
 
 	public String doRegister() {
 		FacesContext ctx = FacesContext.getCurrentInstance();
-		
-		if(userDAO.checkIfLoginOrEmailExists(login, email)) {
+
+		if (userDAO.checkIfLoginOrEmailExists(login, email)) {
 			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Na podany email lub login jest juz zarejestrowane konto", null));
 			return PAGE_STAY_AT_THE_SAME;
 		}
-		
-		User user = new User();
-		user.setName(name);
-		user.setSurname(surname);
-		user.setE_mail(email);
-		user.setLogin(login);
-		user.setPassword(password);
-		user.setActive("yes");
-		user.setRoles(userDAO.getDefaultRoleList());
-		userDAO.create(user);
-		
-		ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
-				"Poprawnie zarejestrowano do systemu, teraz możesz się zalogować", null));
+		try {
+			User user = new User();
+			user.setName(name);
+			user.setSurname(surname);
+			user.setE_mail(email);
+			user.setLogin(login);
+			user.setPassword(password);
+			user.setActive("yes");
+			user.setRoles(userDAO.getDefaultRoleList());
+			userDAO.create(user);
 
-		return PAGE_LOGIN;
+			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+					"Poprawnie zarejestrowano do systemu, teraz możesz się zalogować", null));
+
+			return PAGE_LOGIN;
+		} catch (Exception e) {
+			ctx.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Wystąpił błąd podczas rejestracji", null));
+			return PAGE_STAY_AT_THE_SAME;
+		}
 	}
-	
 
 }
